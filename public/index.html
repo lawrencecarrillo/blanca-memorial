@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>In Loving Memory of Blanca Estella Galvan</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <button class="nav-btn active" onclick="showPage('home',this)">Home</button>
+  <button class="nav-btn" onclick="showPage('gallery',this)">Gallery</button>
+  <button class="nav-btn" onclick="showPage('memories',this)">Memories</button>
+</nav>
+
+<!-- ===== HOME ===== -->
+<div id="page-home" class="page active">
+
+  <svg class="floral-banner" viewBox="0 0 700 180" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fce8f0"/><stop offset="100%" stop-color="#fff0f5"/></linearGradient>
+      <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e8c88a"/><stop offset="100%" stop-color="#c9a55a"/></linearGradient>
+    </defs>
+    <rect width="700" height="180" fill="url(#bgGrad)"/>
+    <line x1="0" y1="2" x2="700" y2="2" stroke="#e8a0be" stroke-width="1" opacity="0.4"/>
+    <path d="M60 175 Q55 140 50 110 Q48 85 58 60" stroke="#b8c9a0" stroke-width="1.2" fill="none" opacity="0.8"/>
+    <path d="M54 120 Q35 108 22 100" stroke="#b8c9a0" stroke-width="1" fill="none" opacity="0.7"/>
+    <path d="M56 95 Q72 82 82 72" stroke="#b8c9a0" stroke-width="1" fill="none" opacity="0.7"/>
+    <circle cx="58" cy="58" r="18" fill="#f5b8ce" opacity="0.25"/>
+    <ellipse cx="58" cy="44" rx="5" ry="9" fill="#e87aaa" opacity="0.7"/>
+    <ellipse cx="69" cy="49" rx="5" ry="9" fill="#e87aaa" opacity="0.65" transform="rotate(45 69 49)"/>
+    <ellipse cx="72" cy="62" rx="5" ry="9" fill="#e87aaa" opacity="0.65" transform="rotate(90 72 62)"/>
+    <ellipse cx="65" cy="72" rx="5" ry="9" fill="#e87aaa" opacity="0.65" transform="rotate(135 65 72)"/>
+    <ellipse cx="52" cy="72" rx="5" ry="9" fill="#e87aaa" opacity="0.65" transform="rotate(180 52 72)"/>
+    <ellipse cx="45" cy="62" rx="5" ry="9" fill="#e87aaa" opacity="0.65" transform="rotate(225 45 62)"/>
+    <ellipse cx="47" cy="50" rx="5" ry="9" fill="#e87aaa" opacity="0.65" transform="rotate(270 47 50)"/>
+    <circle cx="58" cy="58" r="7" fill="#d45090" opacity="0.8"/>
+    <circle cx="58" cy="58" r="3.5" fill="#c03878" opacity="0.9"/>
+    <ellipse cx="38" cy="127" rx="12" ry="6" fill="#a8c890" opacity="0.55" transform="rotate(-25 38 127)"/>
+    <ellipse cx="72" cy="88" rx="11" ry="5" fill="#a8c890" opacity="0.5" transform="rotate(35 72 88)"/>
+    <rect x="346" y="28" width="3" height="52" rx="1.5" fill="url(#goldGrad)" opacity="0.75"/>
+    <rect x="330" y="42" width="35" height="3" rx="1.5" fill="url(#goldGrad)" opacity="0.75"/>
+    <path d="M347 26 L350 32 L347 38 L344 32 Z" fill="url(#goldGrad)" opacity="0.7"/>
+    <path d="M347 80 L350 86 L347 92 L344 86 Z" fill="url(#goldGrad)" opacity="0.7"/>
+    <line x1="120" y1="54" x2="310" y2="54" stroke="#e8a0be" stroke-width="0.6" opacity="0.5"/>
+    <line x1="390" y1="54" x2="580" y2="54" stroke="#e8a0be" stroke-width="0.6" opacity="0.5"/>
+    <circle cx="260" cy="54" r="10" fill="#f5b8ce" opacity="0.4"/>
+    <ellipse cx="260" cy="46" rx="3" ry="5" fill="#e87aaa" opacity="0.5"/>
+    <ellipse cx="267" cy="50" rx="3" ry="5" fill="#e87aaa" opacity="0.5" transform="rotate(60 267 50)"/>
+    <ellipse cx="260" cy="62" rx="3" ry="5" fill="#e87aaa" opacity="0.5" transform="rotate(180 260 62)"/>
+    <circle cx="260" cy="54" r="3" fill="#d45090" opacity="0.7"/>
+    <circle cx="440" cy="54" r="10" fill="#f5b8ce" opacity="0.4"/>
+    <ellipse cx="440" cy="46" rx="3" ry="5" fill="#e87aaa" opacity="0.5"/>
+    <ellipse cx="447" cy="50" rx="3" ry="5" fill="#e87aaa" opacity="0.5" transform="rotate(60 447 50)"/>
+    <ellipse cx="440" cy="62" rx="3" ry="5" fill="#e87aaa" opacity="0.5" transform="rotate(180 440 62)"/>
+    <circle cx="440" cy="54" r="3" fill="#d45090" opacity="0.7"/>
+    <path d="M640 175 Q645 140 650 110 Q652 85 642 60" stroke="#b8c9a0" stroke-width="1.2" fill="none" opacity="0.8"/>
+    <path d="M646 120 Q665 108 678 100" stroke="#b8c9a0" stroke-width="1" fill="none" opacity="0.7"/>
+    <path d="M644 95 Q628 82 618 72" stroke="#b8c9a0" stroke-width="1" fill="none" opacity="0.7"/>
+    <circle cx="642" cy="58" r="18" fill="#f5b8ce" opacity="0.25"/>
+    <ellipse cx="642" cy="44" rx="5" ry="9" fill="#e87aaa" opacity="0.7"/>
+    <ellipse cx="653" cy="49" rx="5" ry="9" fill="#e87aaa" opacity="0.65" transform="rotate(45 653 49)"/>
+    <ellipse cx="656" cy="62" rx="5" ry="9" fill="#e87aaa" opacity="0.65" transform="rotate(90 656 62)"/>
+    <ellipse cx="649" cy="72" rx="5" ry="9" fill="#e87aaa" opacity="0.65" transform="rotate(135 649 72)"/>
+    <ellipse cx="636" cy="72" rx="5" ry="9" fill="#e87aaa" opacity="0.65" transform="rotate(180 636 72)"/>
+    <ellipse cx="629" cy="62" rx="5" ry="9" fill="#e87aaa" opacity="0.65" transform="rotate(225 629 62)"/>
+    <ellipse cx="631" cy="50" rx="5" ry="9" fill="#e87aaa" opacity="0.65" transform="rotate(270 631 50)"/>
+    <circle cx="642" cy="58" r="7" fill="#d45090" opacity="0.8"/>
+    <circle cx="642" cy="58" r="3.5" fill="#c03878" opacity="0.9"/>
+    <ellipse cx="662" cy="127" rx="12" ry="6" fill="#a8c890" opacity="0.55" transform="rotate(25 662 127)"/>
+    <ellipse cx="628" cy="88" rx="11" ry="5" fill="#a8c890" opacity="0.5" transform="rotate(-35 628 88)"/>
+    <line x1="0" y1="176" x2="700" y2="176" stroke="#e8a0be" stroke-width="0.8" opacity="0.4"/>
+  </svg>
+
+  <div class="hero">
+    <div class="eyebrow">&#10022; &nbsp; In Loving Memory &nbsp; &#10022;</div>
+    <div class="photo-frame">
+      <img src="blanca-portrait.jpg" alt="Blanca Estella Galvan" onerror="this.src='https://via.placeholder.com/185x185/fce8f0/c47a95?text=Blanca'"/>
+    </div>
+    <div class="name">Blanca Estella Galvan</div>
+    <div class="golden-girl">Our Golden Girl</div>
+    <div class="dates">September 1, 1957 &nbsp;&middot;&nbsp; May 31, 2026</div>
+    <div class="rule"><div class="rule-line"></div><span style="color:#e8a0be;font-size:10px;">&#9670;</span><div class="rule-line r"></div></div>
+    <div class="verse">&ldquo;People will forget what you said, people will forget what you did, but people will never forget how you made them feel.&rdquo;</div>
+    <div class="verse-ref">&mdash; Maya Angelou</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Her Life</div>
+    <div class="body-text">
+      Blanca Estella Galvan was born on September 1, 1957 in Delano, California. She spent her life rooted in her community, her faith, and above all, her family.<br><br>
+      For 25 years, Blanca served the students of Delano High School as a food service worker. Day after day, she showed up with her signature smile, making students feel seen and cared for. Generations of young people passed through her line, and many carry a warm memory of her kindness.<br><br>
+      Blanca was funny, radiant, and full of warmth. Her smile was something people noticed and never forgot. She had a rare and beautiful gift &mdash; the ability to walk into a room and make every single person in it feel comfortable, welcome, and loved. Her home was always open. Her heart was always full.<br><br>
+      She loved her children fiercely. She delighted in her grandchildren and great-grandchildren. She cherished family time, trips to Las Vegas, and losing herself in a good book. She lived simply and generously, and she leaves behind a community made immeasurably better by her presence.<br><br>
+      Blanca had wonderful taste and a spirit that could hold it all at once. She loved Barry Manilow, Earth Wind and Fire, and Garth Brooks. She found magic in <em>The Wizard of Oz</em> and never tired of <em>It&rsquo;s a Wonderful Life</em>. And in true Blanca fashion, she also adored <em>The Birdcage</em>, <em>To Wong Foo, Thanks for Everything! Julie Newmar</em>, and <em>Friday</em> &mdash; because she loved to laugh, she loved people, and she never took herself too seriously. That was her gift.
+    </div>
+  </div>
+
+  <div class="section" style="text-align:center;">
+    <div class="section-title">Celebration of Life</div>
+    <p style="font-size:16px;line-height:2;color:#4a1535;">
+      Together, let us celebrate the life, love, and legacy of<br>
+      a beloved mother, daughter, sister, auntie, and Mema.
+    </p>
+    <div style="margin:20px auto;display:inline-block;text-align:left;background:linear-gradient(135deg,#fce8f0,#fff0f5);border:1px solid #e8a0be;border-radius:14px;padding:20px 36px;">
+      <div style="display:flex;gap:36px;flex-wrap:wrap;justify-content:center;">
+        <div style="text-align:center;">
+          <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#c47a95;margin-bottom:6px;">When</div>
+          <div style="font-size:17px;color:#4a1535;line-height:1.7;">Friday, June 12, 2026<br>11:00 AM &ndash; 2:00 PM</div>
+        </div>
+        <div style="width:1px;background:#e8a0be;opacity:0.5;"></div>
+        <div style="text-align:center;">
+          <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#c47a95;margin-bottom:6px;">Where</div>
+          <div style="font-size:17px;color:#4a1535;line-height:1.7;">RFK Cafeteria<br>1401 Hiett Ave<br>Delano, CA 93215</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="text-align:center;">
+    <div class="section-title">A Prayer for Blanca</div>
+    <p class="prayer-text">
+      Eternal rest grant unto her, O Lord,<br>
+      and let perpetual light shine upon her.<br>
+      May her soul and the souls<br>
+      of all the faithful departed,<br>
+      through the mercy of God,<br>
+      rest in peace.<br><br>
+      <span class="prayer-amen">Amen.</span>
+    </p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">She Is Survived By</div>
+    <div class="family-grid">
+      <div class="family-group"><h4>Her Children</h4><p>Marisa &amp; Stephen Rojas<br>Lawrence Carrillo &amp; Dennis Dwyer</p></div>
+      <div class="family-group"><h4>Grandchildren</h4><p>Avery Rojas<br>Noah &amp; Marella Rojas<br>Timothy Rojas<br>Nathaniel &amp; Carly Rojas<br>Daniel &amp; Taylor Rojas</p></div>
+      <div class="family-group"><h4>Great-grandchildren</h4><p>Aariyah &middot; Carlisle &middot; Atlas<br>Mateo &middot; Miller &middot; Everett</p></div>
+      <div class="family-group"><h4>Her Community</h4><p>The students and staff of Delano High School, and all who were lucky enough to know her smile.</p></div>
+    </div>
+  </div>
+
+  <div class="closing">
+    <div class="closing-quote">&ldquo;She made everyone feel comfortable and loved.<br>That is no small thing. That is everything.&rdquo;</div>
+    <div class="rule" style="margin-top:18px"><div class="rule-line"></div><span style="color:#e8a0be;font-size:10px;">&#9670;</span><div class="rule-line r"></div></div>
+    <div class="footer-text">Blanca Estella Galvan &nbsp;&middot;&nbsp; Delano, California &nbsp;&middot;&nbsp; 1957 &ndash; 2026</div>
+  </div>
+</div>
+
+<!-- ===== GALLERY ===== -->
+<div id="page-gallery" class="page">
+  <div class="section" style="margin-top:24px">
+    <div class="section-title">Photo Gallery</div>
+    <p class="gallery-intro">A glimpse into Blanca&rsquo;s beautiful life &mdash; shared with the people she loved most.</p>
+    <div style="text-align:center;margin-bottom:20px;">
+      <span class="gallery-instruction">Click or tap any photo to view it full screen</span>
+    </div>
+    <div class="gallery-grid" id="gallery-grid">
+      <div class="gallery-empty" id="gallery-empty">Photos are loading&hellip;</div>
+    </div>
+
+
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+  <span class="lightbox-prev" onclick="changeLightbox(-1)">&#8249;</span>
+  <img id="lightbox-img" src="" alt=""/>
+  <div class="lightbox-label" id="lightbox-label"></div>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+  <span class="lightbox-next" onclick="changeLightbox(1)">&#8250;</span>
+</div>
+
+<!-- ===== MEMORIES ===== -->
+<div id="page-memories" class="page">
+  <div class="section" style="margin-top:24px">
+    <div class="section-title">Leave a Memory</div>
+    <p class="memory-intro">
+      Did you know Blanca? Share a memory, a kind word, or a moment she touched your life.<br>
+      Her family would love to hear from you.
+    </p>
+    <div class="memory-form">
+      <input type="text" id="mem-name" placeholder="Your name" maxlength="80"/>
+      <input type="text" id="mem-relation" placeholder="How did you know Blanca? (e.g. former student, neighbor, friend)" maxlength="150"/>
+      <textarea id="mem-text" placeholder="Share your memory or message here&hellip;"></textarea>
+      <div class="success-msg" id="success-msg">Thank you for sharing. Your memory has been added.</div>
+      <div class="error-msg" id="error-msg">Something went wrong. Please try again.</div>
+      <button class="submit-btn" id="submit-btn" onclick="submitMemory()">Share Memory</button>
+    </div>
+    <div class="section-title" style="margin-top:4px">Memories Shared</div>
+    <div class="memory-cards" id="memory-cards">
+      <div class="memory-empty">Loading memories&hellip;</div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

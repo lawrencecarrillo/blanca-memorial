@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Blanca Memorial</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .admin-wrap { max-width: 500px; margin: 60px auto; padding: 0 20px; }
+  .admin-title { font-size: 22px; color: #3d0f2a; margin-bottom: 6px; text-align: center; }
+  .admin-sub { font-style: italic; font-size: 14px; color: #9a6070; text-align: center; margin-bottom: 24px; }
+  #login-form, #upload-form { display: flex; flex-direction: column; gap: 14px; }
+  #upload-form { display: none; }
+  input[type="password"], input[type="text"], input[type="file"] {
+    font-family: 'Cormorant Garamond', serif; font-size: 15px;
+    color: #4a1535; background: #fff; border: 1px solid #e8a0be;
+    border-radius: 10px; padding: 11px 15px; outline: none; width: 100%;
+  }
+  .photo-list { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+  .photo-row { display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid #f5c6d8; border-radius: 10px; padding: 10px 14px; }
+  .photo-row img { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; }
+  .photo-row-info { flex: 1; font-size: 13px; color: #7a4060; }
+  .delete-btn { background: none; border: 1px solid #e8a0be; border-radius: 8px; color: #c47a95; font-family: 'Cormorant Garamond', serif; font-size: 13px; padding: 6px 12px; cursor: pointer; }
+  .delete-btn:hover { background: #fce8f0; }
+  .status { font-style: italic; font-size: 13px; color: #7a4060; text-align: center; }
+</style>
+</head>
+<body>
+<div class="admin-wrap">
+  <div class="section">
+    <div class="admin-title">Gallery Admin</div>
+    <div class="admin-sub">For Lawrence only</div>
+
+    <div id="login-form">
+      <input type="password" id="password" placeholder="Enter admin password"/>
+      <button class="submit-btn" style="align-self:stretch;" onclick="login()">Sign In</button>
+      <div class="error-msg" id="login-error" style="display:none;">Incorrect password.</div>
+    </div>
+
+    <div id="upload-form">
+      <div class="section-title" style="margin-top:16px;">Upload a Photo</div>
+      <input type="text" id="photo-caption" placeholder="Caption (optional — e.g. Christmas 2023)"/>
+      <input type="file" id="photo-file" accept="image/*"/>
+      <div class="success-msg" id="photo-success" style="display:none;">Photo added to gallery.</div>
+      <div class="error-msg" id="photo-error" style="display:none;">Upload failed. Please try again.</div>
+      <button class="submit-btn" style="align-self:stretch;" onclick="uploadPhoto()">Add to Gallery</button>
+
+      <div class="section-title" style="margin-top:24px;">Current Photos</div>
+      <div class="photo-list" id="photo-list">
+        <div class="status">Loading&hellip;</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:20px;">
+      <a href="/" style="font-style:italic;font-size:13px;color:#c47a95;">Back to memorial site</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const ADMIN_PASSWORD = 'blanca1957'; // Change this to whatever you want
+
+function login() {
+  const pw = document.getElementById('password').value;
+  if (pw === ADMIN_PASSWORD) {
+    document.getElementById('login-form').style.display = 'none';
+    document.getElementById('upload-form').style.display = 'flex';
+    loadPhotos();
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+  }
+}
+
+document.getElementById('password').addEventListener('keydown', e => {
+  if (e.key === 'Enter') login();
+});
+
+async function loadPhotos() {
+  const list = document.getElementById('photo-list');
+  try {
+    const res = await fetch('/api/gallery');
+    const photos = await res.json();
+    if (!photos.length) { list.innerHTML = '<div class="status">No photos yet.</div>'; return; }
+    list.innerHTML = '';
+    photos.forEach(p => {
+      const row = document.createElement('div');
+      row.className = 'photo-row';
+      row.id = 'row-' + p.id;
+      row.innerHTML = `
+        <img src="${p.url}" alt="${p.caption || ''}"/>
+        <div class="photo-row-info">${p.caption || 'No caption'}<br><span style="color:#d4a0b8;font-size:11px;">${p.date}</span></div>
+        <button class="delete-btn" onclick="deletePhoto(${p.id})">Remove</button>
+      `;
+      list.appendChild(row);
+    });
+  } catch(e) {
+    list.innerHTML = '<div class="status">Could not load photos.</div>';
+  }
+}
+
+async function uploadPhoto() {
+  const file = document.getElementById('photo-file').files[0];
+  const caption = document.getElementById('photo-caption').value.trim();
+  if (!file) { alert('Please select a photo.'); return; }
+
+  const btn = document.querySelector('#upload-form .submit-btn');
+  btn.disabled = true; btn.textContent = 'Uploading...';
+
+  const formData = new FormData();
+  formData.append('photo', file);
+  formData.append('caption', caption);
+
+  try {
+    const res = await fetch('/api/gallery', { method: 'POST', body: formData });
+    if (!res.ok) throw new Error();
+    document.getElementById('photo-file').value = '';
+    document.getElementById('photo-caption').value = '';
+    document.getElementById('photo-success').style.display = 'block';
+    setTimeout(() => document.getElementById('photo-success').style.display = 'none', 3000);
+    loadPhotos();
+  } catch(e) {
+    document.getElementById('photo-error').style.display = 'block';
+    setTimeout(() => document.getElementById('photo-error').style.display = 'none', 3000);
+  } finally {
+    btn.disabled = false; btn.textContent = 'Add to Gallery';
+  }
+}
+
+async function deletePhoto(id) {
+  if (!confirm('Remove this photo from the gallery?')) return;
+  try {
+    const res = await fetch('/api/gallery/' + id, { method: 'DELETE' });
+    if (!res.ok) throw new Error();
+    const row = document.getElementById('row-' + id);
+    if (row) row.remove();
+  } catch(e) {
+    alert('Could not remove photo. Please try again.');
+  }
+}
+</script>
+</body>
+</html>
